@@ -9,7 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.springframework</groupId>
-	<artifactId>bug-project</artifactId>
+	<artifactId>stock-market-project</artifactId>
 	<version>0.1.0</version>
 	<packaging>pom</packaging>
 	<properties>
@@ -56,6 +56,8 @@
 	</dependencies>
 	<modules>
 		<module>exchange-service</module>
+		<module>sector-service</module>
+		<module>company-service</module>
 	</modules>
 	<build>
 		<plugins>
