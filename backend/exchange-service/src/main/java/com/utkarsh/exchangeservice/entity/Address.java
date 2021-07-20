@@ -1,22 +1,23 @@
-package com.utkarsh.exchangeservice.entities;
+package com.utkarsh.exchangeservice.entity;
 
-import lombok.*;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "address")
+@Table(name = "address")
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     public int id;
 
     public String street;
