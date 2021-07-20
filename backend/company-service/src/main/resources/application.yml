@@ -1,9 +1,9 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
   application:
-    name: exchange-service
+    name: company-service
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -18,11 +18,11 @@ public class Address {
 
     @Id
     @GeneratedValue
-    public int id;
+    private int id;
 
-    public String street;
-    public String city;
-    public String country;
-    public int zip;
+    private String street;
+    private String city;
+    private String country;
+    private int zip;
 
 }

@@ -20,14 +20,14 @@ public class Exchange {
 
     @Id
     @GeneratedValue
-    public int id;
+    private int id;
 
-    public String name;
-    public String brief;
+    private String name;
+    private String brief;
 
     @OneToOne(cascade = CascadeType.ALL)
-    public Address address;
+    private Address address;
 
-    public String remarks;
+    private String remarks;
 
 }

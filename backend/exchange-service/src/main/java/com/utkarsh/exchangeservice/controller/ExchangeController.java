@@ -17,7 +17,7 @@ public class ExchangeController {
     private ExchangeService exchangeService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Exchange>>  getExchanges() {
+    public ResponseEntity<List<Exchange>>  getAllExchanges() {
         return ResponseEntity
             .ok(exchangeService.getAllExchanges());
     }
