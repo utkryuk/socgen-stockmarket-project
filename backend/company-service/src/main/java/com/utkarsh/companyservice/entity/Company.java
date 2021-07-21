@@ -1,5 +1,6 @@
 package com.utkarsh.companyservice.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,10 @@ public class Company {
     private String name;
     private long turnover;
     private String ceo;
+    private String boardOfDirectors;
 
     @ManyToOne
+    @JoinColumn(name = "sector_id")
     private Sector sector;
 
     private String about;

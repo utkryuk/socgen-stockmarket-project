@@ -1,4 +1,4 @@
-package com.utkarsh.exchangeservice.entity;
+package com.utkarsh.companyservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +26,3 @@ public class Address {
     private String country;
     private String zip;
 }
-

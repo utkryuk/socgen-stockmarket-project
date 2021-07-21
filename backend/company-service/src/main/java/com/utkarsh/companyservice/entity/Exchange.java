@@ -1,4 +1,4 @@
-package com.utkarsh.exchangeservice.entity;
+package com.utkarsh.companyservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,3 +25,5 @@ public class Exchange {
     private Address address;
 
 }
+
+

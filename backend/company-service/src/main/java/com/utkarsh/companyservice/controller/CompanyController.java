@@ -5,10 +5,7 @@ import com.utkarsh.companyservice.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,35 @@ public class CompanyController {
 
         return ResponseEntity.ok(company);
     }
+
+    @PostMapping("")
+    public ResponseEntity<Company> addCompany(@RequestBody Company company) {
+        return ResponseEntity.ok(companyService.addCompany(company));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity updateCompany(@RequestBody Company company, @PathVariable(value = "id") int id) {
+        Company updatedCompany = companyService.updateCompany(company, id);
+        if (updatedCompany == null) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("No Company found");
+        }
+        return ResponseEntity.ok(updatedCompany);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCompany(@PathVariable(value = "id") int id) {
+        boolean isCompanyDeleted = companyService.deleteCompanyById(id);
+        if (!isCompanyDeleted) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("No Company found");
+        }
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("Company Deleted Successfully");
+    }
+
 
 }

@@ -23,12 +23,37 @@ public class CompanyService {
         if (company.isPresent()) {
             return company.get();
         }
-        else {
-            return null;
-        }
+        return null;
     }
 
     public Company addCompany(Company company) {
         return companyRepository.save(company);
     }
+
+    public Company updateCompany(Company company, int id) {
+        Optional<Company> updatedCompany = companyRepository.findById(id);
+        if (updatedCompany.isPresent()) {
+            company.setId(id);
+            return companyRepository.save(company);
+        }
+        return null;
+    }
+
+    public boolean deleteCompanyById(int id) {
+        Optional<Company> deleteCompany = companyRepository.findById(id);
+        if (deleteCompany.isPresent()) {
+            companyRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Company> getCompaniesByExchange(int id) {
+        return companyRepository.findCompaniesByExchangeId(id);
+    }
+
+    public List<Company> getCompaniesByPattern(String pattern) {
+        return companyRepository.findByNameContainingIgnoreCase(pattern);
+    }
+
 }

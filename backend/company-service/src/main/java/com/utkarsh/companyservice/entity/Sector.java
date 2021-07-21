@@ -22,5 +22,8 @@ public class Sector {
     private String brief;
 
     @OneToMany(mappedBy = "sector")
+    @JoinColumn(name = "company_id")
+//    @JoinColumn(name = "sector_id", referencedColumnName = "id")
     private List<Company> companies;
+
 }
