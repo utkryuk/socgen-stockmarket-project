@@ -48,9 +48,9 @@ public class CompanyService {
         return false;
     }
 
-    public List<Company> getCompaniesByExchange(int id) {
-        return companyRepository.findCompaniesByExchangeId(id);
-    }
+//    public List<Company> getCompaniesByExchange(int id) {
+//        return companyRepository.findCompaniesByExchangeId(id);
+//    }
 
     public List<Company> getCompaniesByPattern(String pattern) {
         return companyRepository.findByNameContainingIgnoreCase(pattern);

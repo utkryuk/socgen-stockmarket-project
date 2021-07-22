@@ -37,7 +37,8 @@ public class CompanyController {
 
     @PostMapping("")
     public ResponseEntity<Company> addCompany(@RequestBody Company company) {
-        return ResponseEntity.ok(companyService.addCompany(company));
+        return ResponseEntity
+                .ok(companyService.addCompany(company));
     }
 
     @PutMapping("/{id}")
@@ -65,11 +66,11 @@ public class CompanyController {
                 .body("Company Deleted Successfully");
     }
 
-    @GetMapping("/companyByExchange/{exchangeId}")
-    public ResponseEntity<List<Company>> getCompaniesByExchange(@PathVariable(value = "exchangeId") int exchangeId) {
-        return ResponseEntity
-                .ok(companyService.getCompaniesByExchange(exchangeId));
-    }
+//    @GetMapping("/companyByExchange/{exchangeId}")
+//    public ResponseEntity<List<Company>> getCompaniesByExchange(@PathVariable(value = "exchangeId") int exchangeId) {
+//        return ResponseEntity
+//                .ok(companyService.getCompaniesByExchange(exchangeId));
+//    }
 
     @GetMapping("/companyByPattern/{pattern}")
     public ResponseEntity<List<Company>> getCompaniesByPattern(@PathVariable(value = "pattern") String pattern) {

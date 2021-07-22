@@ -11,7 +11,7 @@ import java.util.List;
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
 //    @Query(value = "select * from company where id in ", nativeQuery = true)
-    List<Company> findCompaniesByExchangeId(@Param("exchangeId") int id);
-
+//    List<Company> findCompaniesByExchangeId(@Param("exchangeId") int id);
+//
     List<Company> findByNameContainingIgnoreCase(String pattern);
 }
