@@ -18,7 +18,8 @@ public class CompanyController {
 
     @GetMapping("")
     public ResponseEntity<List<Company>> getAllCompanies() {
-        return ResponseEntity.ok(companyService.getAllCompanies());
+        return ResponseEntity
+                .ok(companyService.getAllCompanies());
     }
 
     @GetMapping("/{id}")
@@ -30,7 +31,8 @@ public class CompanyController {
                     .body("No Company found");
         }
 
-        return ResponseEntity.ok(company);
+        return ResponseEntity
+                .ok(company);
     }
 
     @PostMapping("")
@@ -46,11 +48,12 @@ public class CompanyController {
                     .status(HttpStatus.NOT_FOUND)
                     .body("No Company found");
         }
-        return ResponseEntity.ok(updatedCompany);
+        return ResponseEntity
+                .ok(updatedCompany);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteCompany(@PathVariable(value = "id") int id) {
+    public ResponseEntity<?> deleteCompany(@PathVariable(value = "id") int id) {
         boolean isCompanyDeleted = companyService.deleteCompanyById(id);
         if (!isCompanyDeleted) {
             return ResponseEntity
@@ -62,5 +65,15 @@ public class CompanyController {
                 .body("Company Deleted Successfully");
     }
 
+    @GetMapping("/companyByExchange/{exchangeId}")
+    public ResponseEntity<List<Company>> getCompaniesByExchange(@PathVariable(value = "exchangeId") int exchangeId) {
+        return ResponseEntity
+                .ok(companyService.getCompaniesByExchange(exchangeId));
+    }
 
+    @GetMapping("/companyByPattern/{pattern}")
+    public ResponseEntity<List<Company>> getCompaniesByPattern(@PathVariable(value = "pattern") String pattern) {
+        return ResponseEntity
+                .ok(companyService.getCompaniesByPattern(pattern));
+    }
 }
