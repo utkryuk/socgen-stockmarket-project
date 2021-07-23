@@ -61,6 +61,7 @@
 		<module>input-service</module>
 		<module>eureka-service</module>
 		<module>api-gateway-service</module>
+		<module>config-service</module>
 	</modules>
 	<build>
 		<plugins>
