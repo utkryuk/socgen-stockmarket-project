@@ -1,9 +1,9 @@
 server:
-  port: 8001
+  port: 8004
 
 spring:
   application:
-    name: company-service
+    name: input-service
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -24,6 +24,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka
+
   instance:
     hostname: localhost

@@ -1,5 +1,6 @@
 package com.utkarsh.companyservice.controller;
 
+import com.utkarsh.companyservice.dto.ExcelDto;
 import com.utkarsh.companyservice.entity.StockPrice;
 import com.utkarsh.companyservice.service.StockPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,13 @@ public class StockPriceController {
     @Autowired
     private StockPriceService stockPriceService;
 
-    @GetMapping("/getStockPrice")
+    @GetMapping("/stockPrice")
     public ResponseEntity<List<StockPrice>> getAllStockPrices() {
         return ResponseEntity
                 .ok(stockPriceService.getAllStockPrices());
     }
 
-    @GetMapping("/getStockPrice/{id}")
+    @GetMapping("/stockPrice/{id}")
     public ResponseEntity<?> getStockPriceById(@PathVariable(value = "id") int id) {
         StockPrice stockPrice = stockPriceService.getStockPriceById(id);
 
@@ -36,9 +37,21 @@ public class StockPriceController {
                 .ok(stockPrice);
     }
 
-    @PostMapping("/addStockPrice")
-    public ResponseEntity<StockPrice> addStockPrices(@RequestBody StockPrice stockPrice) {
+    @GetMapping("/stockPrice/companyId/{companyId}/exchangeId/{exchangeId}/{fromTime}/{toTime}")
+    public ResponseEntity<List<StockPrice>> getAllStockPriceInTimePeriod(
+            @PathVariable("companyId") int companyId,
+            @PathVariable("exchangeId") int exchangeId,
+            @PathVariable("fromTime") String fromTime,
+            @PathVariable("toTime") String toTime) {
+
         return ResponseEntity
-                .ok(stockPriceService.addStockPrice(stockPrice));
+                .ok(stockPriceService
+                        .getAllStockPricesInTimePeriod(companyId, exchangeId, fromTime, toTime));
+    }
+
+    @PostMapping("/stockPrice")
+    public ResponseEntity<List<ExcelDto>> addStockPrices(@RequestBody List<ExcelDto> excelDto) {
+        return ResponseEntity
+                .ok(stockPriceService.addStockPrice(excelDto));
     }
 }
