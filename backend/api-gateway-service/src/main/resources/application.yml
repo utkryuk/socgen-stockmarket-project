@@ -1,2 +1,39 @@
 server:
-  port:
+  port: 8008
+
+spring:
+  application:
+    name: api-gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: COMPANY-SERVICE
+          uri: lb://COMPANY-SERVICE
+          predicates:
+            - Path = /companies/**
+        - id: EXCHANGE-SERVICE
+            uri: lb://EXCHANGE-SERVICE
+            predicates:
+              - Path = /exchanges/**
+        - id: INPUT-SERVICE
+            uri: lb://INPUT-SERVICE
+            predicates:
+              - Path = /input/**
+        - id: SECTOR-SERVICE
+            uri: lb://SECTOR-SERVICE
+            predicates:
+              - Path = /sectors/**
+      discovery:
+        locator:
+          enabled: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    hostname: localhost
