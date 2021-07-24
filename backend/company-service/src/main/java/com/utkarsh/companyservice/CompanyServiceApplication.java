@@ -11,6 +11,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.Collections;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableSwagger2
@@ -28,7 +30,8 @@ public class CompanyServiceApplication {
 				"Copyright - Utkarsh Gupta",
 				new Contact("Utkarsh Gupta", "https://github.com/utkryuk", "utkryuk@gmail.com"),
 				"API License",
-				"https://github.com/utkryuk/socgen-stockmarket-project"
+				"https://github.com/utkryuk/socgen-stockmarket-project",
+				Collections.emptyList()
 		);
 	}
 
