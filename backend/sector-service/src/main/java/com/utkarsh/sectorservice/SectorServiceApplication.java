@@ -31,7 +31,8 @@ public class SectorServiceApplication {
 				"Copyright - Utkarsh Gupta",
 				new Contact("Utkarsh Gupta", "https://github.com/utkryuk", "utkryuk@gmail.com"),
 				"API License",
-				"https://github.com/utkryuk/socgen-stockmarket-project"
+				"https://github.com/utkryuk/socgen-stockmarket-project",
+				Collections.emptyList()
 		);
 	}
 
