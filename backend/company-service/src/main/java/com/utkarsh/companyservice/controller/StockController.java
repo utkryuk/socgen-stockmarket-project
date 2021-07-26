@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/companies")
+@RequestMapping("/companies/stocks")
 public class StockController {
 
     @Autowired
     private StockService stockService;
 
-    @GetMapping("/getStocks")
+    @GetMapping("")
     public ResponseEntity<List<Stock>> getAllStocks() {
         return ResponseEntity
                 .ok(stockService.getAllStocks());
     }
 
-    @GetMapping("/getStocks/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getStockById(@PathVariable(value = "id") int id) {
         Stock stock = stockService.getStockById(id);
         if (stock == null) {
@@ -35,7 +35,7 @@ public class StockController {
                 .ok(stock);
     }
 
-    @PostMapping("/getStocks")
+    @PostMapping("")
     public ResponseEntity<Stock> createStocks(@RequestBody Stock stock) {
         return ResponseEntity
                 .ok(stockService.addStock(stock));

@@ -16,7 +16,7 @@ public class ExchangeController {
     @Autowired
     private ExchangeService exchangeService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Exchange>>  getAllExchanges() {
         return ResponseEntity
             .ok(exchangeService.getAllExchanges());
@@ -35,7 +35,7 @@ public class ExchangeController {
         return ResponseEntity.ok(exchange);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Exchange> addExchange(@RequestBody Exchange exchange) {
         return ResponseEntity.ok(exchangeService.addExchange(exchange));
     }

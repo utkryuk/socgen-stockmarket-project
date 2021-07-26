@@ -40,7 +40,8 @@ public class SectorServiceApplication {
 	public Docket swaggerConfig() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.ant("/sectors/**"))
+				.apis(RequestHandlerSelectors.basePackage("com.utkarsh"))
 				.build()
 				.apiInfo(apiDetails());
 

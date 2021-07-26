@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExcelDto {
-
     private int companyId;
     private int exchangeId;
     private double price;

@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/companies")
+@RequestMapping("/companies/ipo")
 public class IpoController {
 
     @Autowired
     private IpoService ipoService;
 
-    @GetMapping("/ipo")
+    @GetMapping("")
     public ResponseEntity<List<Ipo>> getAllIpos() {
         return ResponseEntity
                 .ok(ipoService.getAllIpos());
     }
 
-    @GetMapping("/ipo/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getIpoById(@PathVariable("id") int id) {
         Ipo ipo = ipoService.getIpoById(id);
         if (ipo == null) {
@@ -35,13 +35,13 @@ public class IpoController {
                 .ok(ipo);
     }
 
-    @PostMapping("/ipo")
+    @PostMapping("")
     public ResponseEntity<Ipo> addIpo(@RequestBody Ipo ipo) {
         return ResponseEntity
                 .ok(ipoService.addIpo(ipo));
     }
 
-    @PutMapping("/ipo/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateIpo(@RequestBody Ipo ipo, @PathVariable(value = "id") int id) {
 
         Ipo updatedIpo = ipoService.updateIpo(id, ipo);
@@ -55,7 +55,7 @@ public class IpoController {
                 .ok(updatedIpo);
     }
 
-    @DeleteMapping("/ipo/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteIpo(@PathVariable(value = "id") int id) {
 
         boolean isDeleted = ipoService.deleteIpo(id);
@@ -70,7 +70,7 @@ public class IpoController {
                 .body("Ipo deleted successfully");
     }
 
-    @GetMapping("/ipo/company/{companyId}")
+    @GetMapping("/company/{companyId}")
     public ResponseEntity<Ipo> getIpoByCompanyId(@PathVariable(value = "companyId") int companyId) {
 
         Ipo ipo = ipoService.getIpoByCompanyId(companyId);

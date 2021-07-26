@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/companies")
+@RequestMapping("/companies/stockprice")
 public class StockPriceController {
 
     @Autowired
     private StockPriceService stockPriceService;
 
-    @GetMapping("/stockPrice")
+    @GetMapping("")
     public ResponseEntity<List<StockPrice>> getAllStockPrices() {
         return ResponseEntity
                 .ok(stockPriceService.getAllStockPrices());
     }
 
-    @GetMapping("/stockPrice/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getStockPriceById(@PathVariable(value = "id") int id) {
         StockPrice stockPrice = stockPriceService.getStockPriceById(id);
 
@@ -37,7 +37,7 @@ public class StockPriceController {
                 .ok(stockPrice);
     }
 
-    @GetMapping("/stockPrice/companyId/{companyId}/exchangeId/{exchangeId}/{fromTime}/{toTime}")
+    @GetMapping("/companyId/{companyId}/exchangeId/{exchangeId}/{fromTime}/{toTime}")
     public ResponseEntity<List<StockPrice>> getAllStockPriceInTimePeriod(
             @PathVariable("companyId") int companyId,
             @PathVariable("exchangeId") int exchangeId,
@@ -49,7 +49,7 @@ public class StockPriceController {
                         .getAllStockPricesInTimePeriod(companyId, exchangeId, fromTime, toTime));
     }
 
-    @PostMapping("/stockPrice")
+    @PostMapping("")
     public ResponseEntity<List<ExcelDto>> addStockPrices(@RequestBody List<ExcelDto> excelDto) {
         return ResponseEntity
                 .ok(stockPriceService.addStockPrice(excelDto));

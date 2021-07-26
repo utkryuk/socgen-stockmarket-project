@@ -17,13 +17,13 @@ public class SectorController {
     @Autowired
     private SectorService sectorService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Sector>> getAllSectors() {
         return ResponseEntity
                 .ok(sectorService.getAllSectors());
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Sector> addSector(@RequestBody Sector sector) {
         return ResponseEntity
                 .ok(sectorService.addSector(sector));
