@@ -34,7 +34,6 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    /users/signin", "/users/validate", "/users/signup
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticate(@RequestBody JwtRequest jwtRequest) throws RuntimeException {
         UserDetails userDetails =
@@ -72,14 +71,14 @@ public class UserController {
                         httpServletRequest.getServerName() + ":" +
                         httpServletRequest.getServerPort();
 
-        mail.setSender("utkryuk@gmail.com");
+        mail.setSender("ryuk@gmail.com");
         mail.setReceiver(user.getEmail());
         mail.setSubject("Email Confirmation");
         mail.setContent("Hi! " + user.getUsername() + "\n" + "To create your email address," +
                 " click on the link below:\n" + applicationUrl + "/user/validate?token=" +
                 user.getEmailValidationToken());
         mail.setSentMailDate(new Date().toString());
-        mailService.sendEmail();
+        mailService.sendEmail(mail);
 
         return ResponseEntity
                 .ok(user);
