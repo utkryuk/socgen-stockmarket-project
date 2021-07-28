@@ -74,7 +74,7 @@ public class UserController {
         mail.setSender("ryuk@gmail.com");
         mail.setReceiver(user.getEmail());
         mail.setSubject("Email Confirmation");
-        mail.setContent("Hi! " + user.getUsername() + "\n" + "To create your email address," +
+        mail.setContent("Hi! " + user.getUsername() + "\n" + "To confirm your email address," +
                 " click on the link below:\n" + applicationUrl + "/user/validate?token=" +
                 user.getEmailValidationToken());
         mail.setSentMailDate(new Date().toString());
