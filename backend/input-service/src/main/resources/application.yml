@@ -1,0 +1,20 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: INPUT-SERVICE
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/stockMarketApplication?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: Utkarsh@123
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect

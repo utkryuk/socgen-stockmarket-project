@@ -1,0 +1,32 @@
+server:
+  port: 8008
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: API-GATEWAY-SERVICE
+
+  cloud:
+    gateway:
+      routes:
+        - id: COMPANY-SERVICE
+          uri: lb://COMPANY-SERVICE
+          predicates:
+            - Path= /companies/**
+        - id: EXCHANGE-SERVICE
+          uri: lb://EXCHANGE-SERVICE
+          predicates:
+            - Path= /exchanges/**
+        - id: INPUT-SERVICE
+          uri: lb://INPUT-SERVICE
+          predicates:
+            - Path= /input/**
+        - id: SECTOR-SERVICE
+          uri: lb://SECTOR-SERVICE
+          predicates:
+            - Path= /sectors/**
+      discovery:
+        locator:
+          enabled: true
+

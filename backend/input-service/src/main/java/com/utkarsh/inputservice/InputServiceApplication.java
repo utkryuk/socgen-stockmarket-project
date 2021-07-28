@@ -1,4 +1,4 @@
-package com.utkarsh.exchangeservice;
+package com.utkarsh.inputservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,16 +17,16 @@ import java.util.Collections;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableSwagger2
-public class ExchangeServiceApplication {
+public class InputServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExchangeServiceApplication.class, args);
+		SpringApplication.run(InputServiceApplication.class, args);
 	}
 
 	private ApiInfo apiDetails() {
 		return new ApiInfo(
-				"Stock Exchange Microservice API",
-				"API Documentation for Stock Exchange Microservice in Stock Market Application",
+				"Input Microservice API",
+				"API Documentation for Input Microservice in Stock Market Application",
 				"1.0",
 				"Copyright - Utkarsh Gupta",
 				new Contact("Utkarsh Gupta", "https://github.com/utkryuk", "utkryuk@gmail.com"),
@@ -40,7 +40,7 @@ public class ExchangeServiceApplication {
 	public Docket swaggerConfig() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.paths(PathSelectors.ant("/exchanges/**"))
+				.paths(PathSelectors.ant("/input/**"))
 				.apis(RequestHandlerSelectors.basePackage("com.utkarsh"))
 				.build()
 				.apiInfo(apiDetails());
