@@ -1,5 +1,6 @@
 package com.utkarsh.sectorservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Company {
 
     @ManyToOne
     @JoinColumn(name = "sector_id")
+    @JsonBackReference
     private Sector sector;
 
     private String about;
