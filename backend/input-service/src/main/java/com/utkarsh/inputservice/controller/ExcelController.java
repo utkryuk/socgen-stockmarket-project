@@ -18,7 +18,7 @@ public class ExcelController {
     @PostMapping("/stocks")
     public ResponseEntity<?> addStockPrice(@RequestBody List<ExcelDto> excelDtos) {
 
-        String POST_REQUEST_URL = "http://localhost:8001/companies/stockPrice";
+        String POST_REQUEST_URL = "http://COMPANY-SERVICE/companies/stockPrice";
         RestTemplate restTemplate = new RestTemplate();
 
         ArrayList<?> addedExcelDtos = restTemplate

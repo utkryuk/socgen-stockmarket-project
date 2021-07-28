@@ -1,14 +1,11 @@
 package com.utkarsh.sectorservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -25,6 +22,7 @@ public class Sector {
     private String name;
     private String brief;
 
-    @OneToMany(mappedBy = "sector")
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "sector", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Company> companies;
 }

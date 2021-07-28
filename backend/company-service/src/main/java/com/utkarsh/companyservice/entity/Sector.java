@@ -1,5 +1,6 @@
 package com.utkarsh.companyservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,8 @@ public class Sector {
     private String name;
     private String brief;
 
-//    @OneToMany
-//    @JoinColumn(name = "company_id")
-////    @JoinColumn(name = "sector_id", referencedColumnName = "id")
-//    private List<Company> companies;
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "sector", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Company> companies;
 
 }
